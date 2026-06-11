@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irriga+ | Calculadora de Economia Hídrica</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="barra-acessibilidade">
+        <button onclick="alterarFonte('aumentar')" aria-label="Aumentar texto">A+</button>
+        <button onclick="alterarFonte('diminuir')" aria-label="Diminuir texto">A-</button>
+        <button onclick="alternarContraste()" aria-label="Alternar alto contraste">Alternar Contraste</button>
+        <button onclick="ouvirTexto()" aria-label="Ouvir texto da página">🔊 Ler Página</button>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">Irriga+</div>
+            <ul>
+                <li><a href="index.html">Tecnologias</a></li>
+                <li><a href="calculadora.html" class="active">Calculadora de Economia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+        
+        <section class="banner-calculadora">
+            <h1>Simulador de Economia Hídrica</h1>
+            <p>Descubra quanta água o seu manejo pode poupar ao adotar sistemas eficientes como o gotejamento.</p>
+        </section>
+
+        <section class="container-calculadora">
+            <div class="card-formulario">
+                <h2>Insira os dados da propriedade</h2>
+                <p class="instrucao">Preencha os campos abaixo para calcular uma estimativa real baseada em dados técnicos da Embrapa.</p>
+                
+                <form onsubmit="event.preventDefault(); calcularEconomia();">
+                    <div class="campo-grupo">
+                        <label for="campoHectares">Tamanho da área de cultivo (em hectares):</label>
+                        <input type="number" id="campoHectares" min="0.1" step="0.1" placeholder="Ex: 2.5" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="tipoCultura">Tipo de Cultura Predominante:</label>
+                        <select id="tipoCultura" required>
+                            <option value="" disabled selected>Selecione uma opção...</option>
+                            <option value="hortalicas">Hortaliças e Legumes</option>
+                            <option value="fruticultura">Fruticultura</option>
+                            <option value="graos">Grãos (Milho/Soja - Irrigação complementar)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-calcular">Calcular Impacto</button>
+                </form>
+            </div>
+
+            <div id="resultado" class="card-resultado oculto">
+                </div>
+        </section>
+
+    </main>
+
+    <script src="js/acessibilidade.js"></script>
+    <script src="js/simulador.js"></script>
+</body>
+</html>
